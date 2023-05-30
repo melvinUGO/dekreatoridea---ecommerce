@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* .heading-one h1 {
+  position: absolute;
+  content: "";
+  width: 0;
+  right: 0;
+  bottom: -3px;
+  height: 1.5px;
+  background-color: #fff;
+  transition: width 0.2s linear;
+}
+
+.heading-one h1:hover {
+  width: 100%;
+  right: initial;
+  left: 0;
+} */
+
+h1 {
+  @apply text-[#212121] font-semibold text-[1.5rem];
+}
+
+p {
+  @apply mb-[1rem] text-[.85rem];
+}
+
+body {
+  @apply bg-[#ffffff];
+}
+
+.center {
+  @apply max-w-[1400px] mx-auto;
+}
+
+.nav-text {
+  @apply text-[#222];
+}
+
+nav svg {
+  @apply text-[1.5rem] sm:text-[1.7rem];
+}
+
+.footer-links-container a {
+  @apply w-fit;
+}
+
+.contact-links p {
+  @apply mb-[1rem] text-[#212121] text-[.85rem];
+}
+
+.contact-links p a {
+  @apply font-bold;
+}
