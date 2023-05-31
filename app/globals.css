@@ -43,6 +43,14 @@ nav svg {
   @apply text-[1.5rem] sm:text-[1.7rem];
 }
 
+.sidebar-links-container a {
+  @apply border-b border-b-[#e4e4e4] p-1;
+}
+
+.sidebar-links-container a:nth-last-child(1) {
+  @apply border-0;
+}
+
 .footer-links-container a {
   @apply w-fit;
 }

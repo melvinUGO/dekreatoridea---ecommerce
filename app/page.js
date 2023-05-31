@@ -1,5 +1,9 @@
 import Image from "next/image";
 
 export default function Home() {
-  return <main className="">main</main>;
+  return (
+    <main className="">
+      <img src="/images/construction.png" alt="" />
+    </main>
+  );
 }
