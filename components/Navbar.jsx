@@ -11,7 +11,7 @@ import { useNavGlobalContext } from "@/contexts/navigaionContext";
 const Navbar = () => {
   const { openSidebar } = useNavGlobalContext();
   return (
-    <nav className=" w-full sticky left-0 top-0 bg-[#ffffff]">
+    <nav className=" w-full sticky left-0 top-0 bg-[#ffffff] z-50">
       <div className=" center flex items-center justify-between p-4 pt-8 sm:p-10 lg:px-3">
         <button onClick={openSidebar}>
           <FaBars />
