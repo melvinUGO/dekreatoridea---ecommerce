@@ -1,5 +1,4 @@
-import ProductBox from "@/components/ProductBox";
-import Image from "next/image";
+import ProductsGrid from "@/components/ProductsGrid";
 
 async function fetchProducts() {
   const response = await fetch("http://localhost:3000/api/products");
@@ -11,13 +10,9 @@ export default async function Home() {
   const products = await fetchProducts();
   console.log(products);
   return (
-    <main className="p-[20px]">
+    <main className="px-[20px] py-[40px]">
       <section>
-        <div className="  center grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-7">
-          {products.map((product, index) => {
-            return <ProductBox key={index} product={product} />;
-          })}
-        </div>
+        <ProductsGrid products={products} />
       </section>
     </main>
   );
