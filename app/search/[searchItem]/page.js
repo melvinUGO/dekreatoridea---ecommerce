@@ -11,23 +11,23 @@ const SearchPage = ({ params }) => {
   const [isLoading, setIsLoading] = useState(false);
   const debouncedSearch = useCallback(debounce(searchProducts, 500), []);
 
-  useEffect(() => {
-    if (searchItem.length > 0) {
-      setIsLoading(true);
-      debouncedSearch(searchItem);
-    } else {
-      setProducts([]);
-    }
-  }, [searchItem]);
+  // useEffect(() => {
+  //   if (searchItem.length > 0) {
+  //     setIsLoading(true);
+  //     debouncedSearch(searchItem);
+  //   } else {
+  //     setProducts([]);
+  //   }
+  // }, [searchItem]);
 
-  function searchProducts(phrase) {
-    axios
-      .get("/api/products?phrase=" + encodeURIComponent(phrase))
-      .then((res) => {
-        setProducts(res.data);
-        setIsLoading(false);
-      });
-  }
+  // function searchProducts(phrase) {
+  //   axios
+  //     .get("/api/products?phrase=" + encodeURIComponent(phrase))
+  //     .then((res) => {
+  //       setProducts(res.data);
+  //       setIsLoading(false);
+  //     });
+  // }
 
   return (
     <>
