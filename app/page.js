@@ -1,8 +1,10 @@
 import ProductsGrid from "@/components/ProductsGrid";
+import { mongooseConnect } from "@/lib/mongoose";
+import { Product } from "@/models/Product";
 
 async function fetchProducts() {
-  const response = await fetch("http://localhost:3000/api/products");
-  const products = await response.json();
+  await mongooseConnect();
+  const products = await Product.find({});
   return products;
 }
 
