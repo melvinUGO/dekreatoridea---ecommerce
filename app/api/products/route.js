@@ -4,6 +4,6 @@ import { NextResponse } from "next/server";
 
 export async function GET(request) {
   await mongooseConnect();
-  const products = await Product.find({});
-  return NextResponse.json(products);
+
+  return NextResponse("ok");
 }

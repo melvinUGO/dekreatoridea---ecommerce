@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import Footer from "@/components/Footer";
 import Sidebar from "@/components/Sidebar";
 import { NavigationContextProvider } from "@/contexts/navigaionContext";
+import SearchModal from "@/components/modals/SearchModal";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +20,9 @@ export default function RootLayout({ children }) {
         <NavigationContextProvider>
           <Sidebar />
           <Navbar />
+          <SearchModal />
         </NavigationContextProvider>
+
         {children}
         <Footer />
       </body>

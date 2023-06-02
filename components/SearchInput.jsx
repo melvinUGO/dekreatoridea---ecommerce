@@ -2,7 +2,12 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { FiSearch } from "react-icons/fi";
 
-const SearchInput = ({ outline = false, searchedItem }) => {
+const SearchInput = ({
+  outline = false,
+  searchedItem,
+  closeSidebar,
+  closeSearchModal,
+}) => {
   const [searchItem, setSearchItem] = useState(
     searchedItem ? searchedItem : ""
   );
@@ -10,6 +15,16 @@ const SearchInput = ({ outline = false, searchedItem }) => {
 
   const searchProduct = (e) => {
     e.preventDefault();
+    if (location.href.includes("search")) {
+      router.push("/search/" + searchItem);
+      return;
+    }
+    if (closeSidebar) {
+      closeSidebar();
+    }
+    if (closeSearchModal) {
+      closeSearchModal();
+    }
     router.push("/search/" + searchItem);
   };
   return (

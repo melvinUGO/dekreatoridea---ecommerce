@@ -31,7 +31,7 @@ const Sidebar = () => {
         </div>
         <div>
           <div className="p-2 border border-t-[#e4e4e4] my-10">
-            <SearchInput />
+            <SearchInput closeSidebar={closeSidebar} />
           </div>
         </div>
         <SocialIcons />
