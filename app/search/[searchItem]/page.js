@@ -22,7 +22,6 @@ const SearchPage = ({ params }) => {
   }, [searchItem]);
 
   function searchProducts(phrase) {
-    console.log(phrase);
     axios.get("/api/products/search?search=" + phrase).then((res) => {
       setProducts(res.data);
       setIsLoading(false);

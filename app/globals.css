@@ -36,7 +36,7 @@ body {
 }
 
 .btn {
-  @apply bg-[#212121] text-[#fff] text-[.75rem] text-center tracking-wider py-3 px-5 w-full;
+  @apply bg-[#212121] hover:bg-black text-[#fff] text-[.75rem] text-center tracking-wider py-3 px-5 w-full;
 }
 
 .nav-text {

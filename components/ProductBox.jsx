@@ -1,9 +1,10 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const ProductBox = ({ product }) => {
   return (
-    <div className=" text-center">
+    <Link href={"/products/" + product._id} className=" text-center">
       <div className=" relative w-full h-[250px] sm:h-[300px] md:h-[350px] ">
         <img
           src={product.images[0]}
@@ -29,7 +30,7 @@ const ProductBox = ({ product }) => {
         </h1>
         <p>₦{product.price}</p>
       </div>
-    </div>
+    </Link>
   );
 };
 
