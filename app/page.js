@@ -11,7 +11,7 @@ async function fetchProducts() {
 
 export default async function Home() {
   const products = await fetchProducts();
-  console.log(products);
+
   return (
     <main className="px-[20px] py-[40px]">
       <section className="text-center">

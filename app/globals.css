@@ -27,12 +27,20 @@ p {
   @apply mb-[1rem] text-[.85rem];
 }
 
+label {
+  @apply w-[0.85rem] pt-2 font-light;
+}
+
 body {
   @apply bg-[#ffffff];
 }
 
+input {
+  @apply outline-none;
+}
+
 .center {
-  @apply max-w-[1400px] mx-auto;
+  @apply max-w-[1200px] mx-auto;
 }
 
 .btn {

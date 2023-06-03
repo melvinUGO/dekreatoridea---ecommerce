@@ -1,46 +1,55 @@
-// "use client";
-//import HeadingOne from "@/components/HeadingOne";
-import { mongooseConnect } from "@/lib/mongoose";
-import { Product } from "@/models/Product";
-import React from "react";
+"use client";
+import HeadingOne from "@/components/HeadingOne";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
-async function getProduct(id) {
-  await mongooseConnect();
-  const product = await Product.findById(id);
-  return product;
-}
+const page = ({ params }) => {
+  const [product, setProduct] = useState("");
 
-const page = async ({ params }) => {
-  const product = await getProduct(params.id);
+  useEffect(() => {
+    axios.get("/api/products?id=" + params.id).then((res) => {
+      console.log(res.data);
+      setProduct(res.data);
+    });
+  }, []);
+
   return (
     <div className="max-w-[600px] mx-auto lg:max-w-[1200px] p-[20px] ">
       <div className="grid lg:grid-cols-2 gap-5">
         <div className="w-full">
-          <img src={product.images[0]} alt="product.title" />
+          {product && <img src={product.images[0]} alt="product.title" />}
         </div>
         <div className="w-full">
-          {/* <HeadingOne text={product.title} /> */}
-          <form>
+          <HeadingOne text={product.title} />
+          <form className=" border border-1 border-[#21212133]">
             <div className=" bg-[#f2f2f2] p-3">
-              <h1>₦{product.price}</h1>
+              <h1>₦{product?.price}</h1>
             </div>
-            <div className="py-2">
-              <p>SIZE</p>
-              <div></div>
-            </div>
-            <div className=" flex justify-between items-center py-2">
-              <p>Quantity</p>
-              <div className=" text-center max-w-[150px] grid grid-cols-3">
-                <button>-</button>
-                <p>1</p>
-                <button>+</button>
+            <div className="p-3 py-5">
+              <div className="py-2">
+                <p>SIZE</p>
+                <div></div>
               </div>
+              <div className=" flex justify-between items-center py-2">
+                <p>Quantity</p>
+                <div className=" border bg-[#f2f2f2] text-center max-w-[150px] flex items-center">
+                  <button className="p-2 px-3 border bg-[#ffffff]">-</button>
+                  <p className="p-2 px-3 mb-0 ">1</p>
+                  <button className="p-2 px-3 border bg-[#ffffff]">+</button>
+                </div>
+              </div>
+              <button className="w-full py-2 border border-black hover:bg-black hover:text-white">
+                ADD TO CART <span className="text-[1.2rem]">+</span>
+              </button>
             </div>
           </form>
         </div>
       </div>
-      <div>
-        <h1> &ldquo;ORIGINAL RELEASE DATE:JUNE 2ND 2023&rdquo;</h1>
+      <div className="py-10">
+        <h1 className="py-5">
+          {" "}
+          &ldquo;ORIGINAL RELEASE DATE:JUNE 2ND 2023&rdquo;
+        </h1>
         <p className=" font-bold">ALL SALES ARE FINAL.</p>
         <p className=" font-bold">
           Please allow up to 3-5 business days for shipping and processing

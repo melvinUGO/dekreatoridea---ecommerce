@@ -13,7 +13,7 @@ const Sidebar = () => {
     <div
       className={` ${
         isSidebarOpen ? " translate-x-0 " : " -translate-x-[100%] "
-      }  ease-in delay-300 transition-opacity fixed top-0 left-0 z-50 w-[100vw] h-full bg-[rgba(0,0,0,0.3)] flex`}
+      }  ease-out delay-300 transition-opacity fixed top-0 left-0 z-50 w-[100vw] h-full bg-[rgba(0,0,0,0.3)] flex`}
     >
       <nav className="bg-[#ffffff] text-[#212121] h-full w-[264px] sm:w-[324px] p-[20px]">
         <button onClick={closeSidebar}>
@@ -27,7 +27,7 @@ const Sidebar = () => {
           <Link href="/">CAMPAIGNS</Link>
           <Link href="/">ARTICLES</Link>
           <Link href="/">LOOKBOOK</Link>
-          <Link href="/">LOG IN</Link>
+          <Link href="/account/login">LOG IN</Link>
         </div>
         <div>
           <div className="p-2 border border-t-[#e4e4e4] my-10">

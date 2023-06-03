@@ -12,14 +12,18 @@ const HeadingOne = ({ text }) => {
   //   }
 
   return (
-    <div className="heading-one ">
-      <h1 className="text-center">{text}</h1>
-      <div
-        className={`m-2 mb-10 transition-all delay-200  h-[2px] mx-auto bg-[#212121] ${
-          loaded ? " w-10" : "w-0"
-        }`}
-      ></div>
-    </div>
+    <>
+      {text && (
+        <div className="heading-one ">
+          <h1 className="text-center">{text}</h1>
+          <div
+            className={`m-2 mb-10 transition-all delay-200  h-[2px] mx-auto bg-[#212121] ${
+              loaded ? " w-10" : "w-0"
+            }`}
+          ></div>
+        </div>
+      )}
+    </>
   );
 };
 

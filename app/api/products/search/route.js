@@ -6,7 +6,6 @@ export async function GET(request) {
   await mongooseConnect();
   const { searchParams } = new URL(request.url);
   const phrase = searchParams.get("search");
-  console.log(phrase);
 
   const products = await Product.find({
     $or: [

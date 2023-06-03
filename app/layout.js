@@ -21,10 +21,10 @@ export default function RootLayout({ children }) {
           <Sidebar />
           <Navbar />
           <SearchModal />
-        </NavigationContextProvider>
 
-        {children}
-        <Footer />
+          {children}
+          <Footer />
+        </NavigationContextProvider>
       </body>
     </html>
   );
