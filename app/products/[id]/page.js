@@ -3,7 +3,7 @@ import HeadingOne from "@/components/HeadingOne";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-const page = ({ params }) => {
+const ProductsPage = ({ params }) => {
   const [product, setProduct] = useState("");
 
   useEffect(() => {
@@ -11,7 +11,7 @@ const page = ({ params }) => {
       console.log(res.data);
       setProduct(res.data);
     });
-  }, []);
+  }, [params.id]);
 
   return (
     <div className="max-w-[600px] mx-auto lg:max-w-[1200px] p-[20px] ">
@@ -59,4 +59,4 @@ const page = ({ params }) => {
   );
 };
 
-export default page;
+export default ProductsPage;
