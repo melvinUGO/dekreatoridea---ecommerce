@@ -8,8 +8,8 @@ const Question = ({ title, info }) => {
         className="flex items-center justify-between hover:bg-gray-300 p-2"
         onClick={() => setShowInfo(!showInfo)}
       >
-        <h4>{title}</h4>
-        <button className="btn" onClick={() => setShowInfo(!showInfo)}>
+        <h4 className="grow">{title}</h4>
+        <button className="" onClick={() => setShowInfo(!showInfo)}>
           {showInfo ? <AiOutlineMinus /> : <AiOutlinePlus />}
         </button>
       </header>

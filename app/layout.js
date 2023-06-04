@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import Sidebar from "@/components/Sidebar";
 import { NavigationContextProvider } from "@/contexts/navigaionContext";
 import SearchModal from "@/components/modals/SearchModal";
+import { UserContextProvider } from "@/contexts/userContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,14 +18,15 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="relative">
-        <NavigationContextProvider>
-          <Sidebar />
-          <Navbar />
-          <SearchModal />
-
-          {children}
-          <Footer />
-        </NavigationContextProvider>
+        <UserContextProvider>
+          <NavigationContextProvider>
+            <Sidebar />
+            <Navbar />
+            <SearchModal />
+            {children}
+            <Footer />
+          </NavigationContextProvider>
+        </UserContextProvider>
       </body>
     </html>
   );

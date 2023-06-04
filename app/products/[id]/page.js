@@ -25,12 +25,12 @@ const ProductsPage = ({ params }) => {
             <div className=" bg-[#f2f2f2] p-3">
               <h1>₦{product?.price}</h1>
             </div>
-            <div className="p-3 py-5">
+            <div className="p-3 py-10">
               <div className="py-2">
                 <p>SIZE</p>
                 <div></div>
               </div>
-              <div className=" flex justify-between items-center py-2">
+              <div className=" flex justify-between items-center py-5">
                 <p>Quantity</p>
                 <div className=" border bg-[#f2f2f2] text-center max-w-[150px] flex items-center">
                   <button className="p-2 px-3 border bg-[#ffffff]">-</button>

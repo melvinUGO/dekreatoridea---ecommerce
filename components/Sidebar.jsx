@@ -5,9 +5,11 @@ import SocialIcons from "./SocialIcons";
 import Link from "next/link";
 import { useNavGlobalContext } from "@/contexts/navigaionContext";
 import SearchInput from "./SearchInput";
+import { useGlobalUserContext } from "@/contexts/userContext";
 
 const Sidebar = () => {
   const { isSidebarOpen, closeSidebar } = useNavGlobalContext();
+  const { user, logout } = useGlobalUserContext();
 
   return (
     <div
@@ -23,11 +25,18 @@ const Sidebar = () => {
           className=" sidebar-links-container flex flex-col gap-5 py-10"
           onClick={closeSidebar}
         >
-          <Link href="/FAQ">SHOP</Link>
-          <Link href="/">CAMPAIGNS</Link>
+          <Link href="/products">SHOP</Link>
+          {/* <Link href="/">CAMPAIGNS</Link> */}
           <Link href="/">ARTICLES</Link>
           <Link href="/">LOOKBOOK</Link>
-          <Link href="/account/login">LOG IN</Link>
+          {user && <Link href={"/"}>ACCOUNT</Link>}
+          {user ? (
+            <Link onClick={logout} href="/">
+              LOG OUT
+            </Link>
+          ) : (
+            <Link href="/account/login">LOG IN</Link>
+          )}
         </div>
         <div>
           <div className="p-2 border border-t-[#e4e4e4] my-10">

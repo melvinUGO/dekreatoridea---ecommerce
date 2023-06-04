@@ -1,23 +1,41 @@
 "use client";
 import HeadingOne from "@/components/HeadingOne";
+import { useGlobalUserContext } from "@/contexts/userContext";
+import axios from "axios";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 const AccountloginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { saveUser } = useGlobalUserContext();
+  const router = useRouter();
 
-  const handleSubmit = (e) => {
+  const clearInputFields = () => {
+    setEmail("");
+    setPassword("");
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(email, password);
+
+    const data = { email, password };
+    const res = await axios.post("/api/account/login", data);
+    const user = res.data;
+
+    saveUser(user.id, user.token);
+
+    clearInputFields();
+    router.push("/");
   };
 
   return (
     <>
-      <div class="container max-w-[600px] mx-auto p-[20px]">
+      <div className="container max-w-[600px] mx-auto p-[20px]">
         <HeadingOne text={"LOGIN"} />
         <form onSubmit={handleSubmit}>
-          <label for="email">Email</label>
+          <label htmlFor="email">Email</label>
           <br />
           <input
             className="w-full p-3 border border-[#21212180] my-1"
@@ -26,7 +44,7 @@ const AccountloginPage = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
           <br />
-          <label for="password">Password</label>
+          <label htmlFor="password">Password</label>
           <br />
           <input
             className="w-full p-3 border border-[#21212180] my-1"
@@ -37,23 +55,25 @@ const AccountloginPage = () => {
           />
           <p>
             {" "}
-            <a href="/forgot-password" class="tsm:text-right block ">
+            <a href="/forgot-password" className="tsm:text-right block ">
               Forgot your password?
             </a>
           </p>
-          <button
-            type="submit"
-            class=" p-3 px-4 bg-[#212121] hover:bg-black text-white font-light block w-full sm:inline sm:w-auto"
-          >
-            SIGN IN
-          </button>
-          <Link
-            href={"/account/register"}
-            type="submit"
-            class=" p-3 px-4 text-black font-light  block w-full sm:inline sm:w-auto "
-          >
-            CREATE ACCOUNT
-          </Link>
+          <div className="py-5">
+            <button
+              type="submit"
+              className=" p-3 px-4 bg-[#212121] hover:bg-black text-white font-light block w-full sm:inline sm:w-auto"
+            >
+              SIGN IN
+            </button>
+            <Link
+              href={"/account/register"}
+              type="submit"
+              className=" p-3 px-4 text-black text-center hover:text-[#6e6e6e] font-light  block w-full sm:inline sm:w-auto "
+            >
+              CREATE ACCOUNT
+            </Link>
+          </div>
         </form>
       </div>
     </>

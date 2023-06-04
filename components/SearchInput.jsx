@@ -36,13 +36,12 @@ const SearchInput = ({
     >
       <input
         type="text"
-        className="border-0  sm:grow outline-none"
+        className="border-0 grow outline-none"
         placeholder="Search our store..."
         value={searchItem}
         onChange={(e) => setSearchItem(e.target.value)}
       />
       <button type="submit">
-        {" "}
         <FiSearch />
       </button>
     </form>

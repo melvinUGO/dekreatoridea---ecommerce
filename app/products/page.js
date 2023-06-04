@@ -13,7 +13,7 @@ const AllProductsPage = async () => {
   const products = await fetchProducts();
 
   return (
-    <section className="text-center">
+    <section className="text-center p-[20px] py-[40px]">
       <ProductsGrid products={products} />
     </section>
   );
