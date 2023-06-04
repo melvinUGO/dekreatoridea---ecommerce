@@ -27,7 +27,7 @@ const AccountRegisterPage = () => {
     const res = await axios.post("/api/account/register", data);
     const user = res.data;
 
-    saveUser(user._id, user.token);
+    saveUser(user.id, user.token);
 
     clearInputFields();
     router.push("/");
