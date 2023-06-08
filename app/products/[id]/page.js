@@ -5,16 +5,18 @@ import React, { useEffect, useState } from "react";
 
 const ProductsPage = ({ params }) => {
   const [product, setProduct] = useState("");
+  const [size, setSize] = useState("small");
+
+  console.log(product?.size?.split(","));
 
   useEffect(() => {
     axios.get("/api/products?id=" + params.id).then((res) => {
-      console.log(res.data);
       setProduct(res.data);
     });
   }, [params.id]);
 
   return (
-    <div className="max-w-[600px] mx-auto lg:max-w-[1200px] p-[20px] ">
+    <div className="max-w-[600px] mx-auto lg:max-w-[1200px] p-[20px]">
       <div className="grid lg:grid-cols-2 gap-5">
         <div className="w-full">
           {product && <img src={product.images[0]} alt="product.title" />}
@@ -28,7 +30,32 @@ const ProductsPage = ({ params }) => {
             <div className="p-3 py-10">
               <div className="py-2">
                 <p>SIZE</p>
-                <div></div>
+                <div className=" flex flex-wrap items-center gap-2">
+                  {product?.size?.split(",").map((s, index) => {
+                    return (
+                      <div className="" key={index}>
+                        <input
+                          className=""
+                          hidden
+                          type="radio"
+                          name="size"
+                          value={s}
+                          id={s}
+                          checked={size === s}
+                          onChange={(e) => setSize(e.target.value)}
+                        />
+                        <label
+                          htmlFor={s}
+                          className={`${
+                            size === s && "bg-black text-white"
+                          } capitalize cursor-pointer border border-black p-1 px-4 text-[0.9rem]`}
+                        >
+                          {s}
+                        </label>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
               <div className=" flex justify-between items-center py-5">
                 <p>Quantity</p>
