@@ -24,11 +24,11 @@ const ProductsPage = ({ params }) => {
         <div className="w-full">
           <HeadingOne text={product.title} />
           <form className=" border border-1 border-[#21212133]">
-            <div className=" bg-[#f2f2f2] p-3">
+            <div className=" bg-[#f2f2f2] p-3 px-5">
               <h1>₦{product?.price}</h1>
             </div>
-            <div className="p-3 py-10">
-              <div className="py-2">
+            <div className="px-5 py-8">
+              <div>
                 <p>SIZE</p>
                 <div className=" flex flex-wrap items-center gap-2">
                   {product?.size?.split(",").map((s, index) => {
@@ -75,7 +75,8 @@ const ProductsPage = ({ params }) => {
       <div className="py-10">
         <h1 className="py-5">
           {" "}
-          &ldquo;ORIGINAL RELEASE DATE:JUNE 2ND 2023&rdquo;
+          &ldquo;ORIGINAL RELEASE DATE:
+          {new Date(product.createdAt).toUTCString().substring(0, 16)}&rdquo;
         </h1>
         <p className=" font-bold">ALL SALES ARE FINAL.</p>
         <p className=" font-bold">

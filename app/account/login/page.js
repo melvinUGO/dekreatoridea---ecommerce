@@ -27,7 +27,7 @@ const AccountloginPage = () => {
     saveUser(user.id, user.token);
 
     clearInputFields();
-    router.push("/");
+    router.push("/account");
   };
 
   return (
@@ -38,6 +38,9 @@ const AccountloginPage = () => {
           <label htmlFor="email">Email</label>
           <br />
           <input
+            required
+            type="email"
+            name="email"
             className="w-full p-3 border border-[#21212180] my-1"
             id="email"
             value={email}
@@ -47,9 +50,11 @@ const AccountloginPage = () => {
           <label htmlFor="password">Password</label>
           <br />
           <input
+            required
             className="w-full p-3 border border-[#21212180] my-1"
             id="password"
             type="password"
+            name="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />

@@ -30,7 +30,7 @@ const AccountRegisterPage = () => {
     saveUser(user.id, user.token);
 
     clearInputFields();
-    router.push("/");
+    router.push("/account");
   };
   return (
     <>
@@ -39,19 +39,25 @@ const AccountRegisterPage = () => {
         <form onSubmit={handleSubmit}>
           <div className=" sm:flex items-center gap-5">
             <div className="w-full">
-              <label htmlFor="first name">First Name</label>
+              <label htmlFor="firstname">First Name</label>
               <br />
               <input
+                required
+                type="text"
+                name="firstname"
                 className="w-full p-3 border border-[#21212180] my-1"
-                id="first name"
+                id="firstname"
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
               />
             </div>
             <div className="w-full">
-              <label htmlFor="last name">Last Name</label>
+              <label htmlFor="lastname">Last Name</label>
               <br />
               <input
+                required
+                type="text"
+                name="lastname"
                 className="w-full p-3 border border-[#21212180] my-1"
                 id="last name"
                 value={lastName}
@@ -62,6 +68,9 @@ const AccountRegisterPage = () => {
           <label htmlFor="email">Email</label>
           <br />
           <input
+            required
+            type="email"
+            name="email"
             className="w-full p-3 border border-[#21212180] my-1"
             id="email"
             value={email}
@@ -71,6 +80,8 @@ const AccountRegisterPage = () => {
           <label htmlFor="password">Password</label>
           <br />
           <input
+            required
+            name="password"
             className="w-full p-3 border border-[#21212180] my-1"
             id="password"
             type="password"
