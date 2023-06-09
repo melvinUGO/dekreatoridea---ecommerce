@@ -11,6 +11,7 @@ const AccountRegisterPage = () => {
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [error, setError] = useState(false);
   const { saveUser } = useGlobalUserContext();
   const router = useRouter();
 
@@ -23,8 +24,13 @@ const AccountRegisterPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError(false);
     const data = { email, password, firstName, lastName };
-    const res = await axios.post("/api/account/register", data);
+    try {
+      const res = await axios.post("/api/account/register", data);
+    } catch (error) {
+      setError(true);
+    }
     const user = res.data;
 
     saveUser(user.id, user.token);
@@ -88,7 +94,11 @@ const AccountRegisterPage = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-
+          {error && (
+            <p className="text-red-500">
+              An error occured while registering user
+            </p>
+          )}
           <div className="py-5">
             <button
               type="submit"

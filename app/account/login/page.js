@@ -10,6 +10,7 @@ const AccountloginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { saveUser } = useGlobalUserContext();
+  const [error, setError] = useState(false);
   const router = useRouter();
 
   const clearInputFields = () => {
@@ -19,9 +20,14 @@ const AccountloginPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError(false);
 
-    const data = { email, password };
-    const res = await axios.post("/api/account/login", data);
+    try {
+      const data = { email, password };
+      const res = await axios.post("/api/account/login", data);
+    } catch (error) {
+      setError(true);
+    }
     const user = res.data;
 
     saveUser(user.id, user.token);
@@ -64,6 +70,7 @@ const AccountloginPage = () => {
               Forgot your password?
             </a>
           </p>
+          {error && <p className="text-red-500">Invalid credentials</p>}
           <div className="py-5">
             <button
               type="submit"

@@ -1,3 +1,4 @@
+import Loading from "@/app/loading";
 import { useGlobalUserContext } from "@/contexts/userContext";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
@@ -12,7 +13,7 @@ const AccountDetailsForm = ({}) => {
   const [number, setNumber] = useState("");
   const [address, setAddress] = useState("");
   const [saving, setSaving] = useState(false);
-  const [addressLoaded, setAddressLoaded] = useState(true);
+  const [userDetailsLoading, setUserDetailsLoading] = useState(false);
   const [error, setError] = useState(false);
   const data = { userId: user?.userId, name, email, state, number, address };
 
@@ -54,6 +55,7 @@ const AccountDetailsForm = ({}) => {
   };
 
   const getUserDetails = async () => {
+    setUserDetailsLoading(true);
     const response = await axios("/api/account/address?id=" + user?.userId);
     const userDetails = response.data;
     setUserDetails([userDetails]);
@@ -64,6 +66,7 @@ const AccountDetailsForm = ({}) => {
       setAddress(userDetails?.address);
       setNumber(userDetails?.number);
     }
+    setUserDetailsLoading(false);
   };
 
   useEffect(() => {
@@ -73,8 +76,8 @@ const AccountDetailsForm = ({}) => {
     }
   }, [user.userId]);
 
-  if (!addressLoaded) {
-    return;
+  if (userDetailsLoading) {
+    return <Loading />;
   }
 
   return (

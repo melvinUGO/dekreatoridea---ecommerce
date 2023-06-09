@@ -2,7 +2,6 @@
 import AccountDetailsForm from "@/components/AccountDetailsForm";
 import HeadingOne from "@/components/HeadingOne";
 import { useGlobalUserContext } from "@/contexts/userContext";
-import axios from "axios";
 import Link from "next/link";
 import React, { useState } from "react";
 
@@ -30,7 +29,6 @@ const AccountPage = () => {
             <p>You haven&apos;t placed any orders yet.</p>
           </div>
           <div className=" md:min-w-[300px]">
-            <h1>ACCOUNT DETAILS</h1>
             <AccountDetailsForm />
           </div>
         </div>

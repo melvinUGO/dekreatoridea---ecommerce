@@ -1,4 +1,5 @@
 "use client";
+import Loading from "@/app/loading";
 import HeadingOne from "@/components/HeadingOne";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
@@ -6,21 +7,27 @@ import React, { useEffect, useState } from "react";
 const ProductsPage = ({ params }) => {
   const [product, setProduct] = useState("");
   const [size, setSize] = useState("small");
+  const [loading, setLoading] = useState(false);
 
   console.log(product?.size?.split(","));
 
   useEffect(() => {
+    setLoading(true);
     axios.get("/api/products?id=" + params.id).then((res) => {
       setProduct(res.data);
     });
+    setLoading(false);
   }, [params.id]);
 
   return (
     <div className="max-w-[600px] mx-auto lg:max-w-[1200px] p-[20px]">
       <div className="grid lg:grid-cols-2 gap-5">
-        <div className="w-full">
-          {product && <img src={product.images[0]} alt="product.title" />}
-        </div>
+        {loading && <Loading />}
+        {!loading && (
+          <div className="w-full">
+            {product && <img src={product.images[0]} alt="product.title" />}
+          </div>
+        )}
         <div className="w-full">
           <HeadingOne text={product.title} />
           <form className=" border border-1 border-[#21212133]">
