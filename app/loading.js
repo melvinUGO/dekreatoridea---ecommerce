@@ -2,7 +2,7 @@
 import React from "react";
 import { Rings } from "react-loader-spinner";
 
-const loading = () => {
+const Loading = () => {
   return (
     <div>
       <div className="flex items-center justify-center my-28 py-28">
@@ -21,4 +21,4 @@ const loading = () => {
   );
 };
 
-export default loading;
+export default Loading;

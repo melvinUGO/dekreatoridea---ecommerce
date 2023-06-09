@@ -27,7 +27,7 @@ const AccountPage = () => {
         <div className="flex flex-col md:flex-row justify-between gap-5">
           <div className="">
             <h1>ORDER HISTORY</h1>
-            <p>You haven't placed any orders yet.</p>
+            <p>You haven&apos;t placed any orders yet.</p>
           </div>
           <div className=" md:min-w-[300px]">
             <h1>ACCOUNT DETAILS</h1>

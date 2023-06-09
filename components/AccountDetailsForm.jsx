@@ -13,6 +13,7 @@ const AccountDetailsForm = ({}) => {
   const [address, setAddress] = useState("");
   const [saving, setSaving] = useState(false);
   const [addressLoaded, setAddressLoaded] = useState(true);
+  const [error, setError] = useState(false);
   const data = { userId: user?.userId, name, email, state, number, address };
 
   const clearFormInput = () => {
@@ -26,17 +27,21 @@ const AccountDetailsForm = ({}) => {
   const saveAccountDetails = async (e) => {
     e.preventDefault();
     setSaving(true);
+    setError(false);
 
-    if (userDetails.length > 0) {
-      console.log(`update ${userDetails}`);
-      return await updateAccountDetails();
-    } else {
-      console.log(userDetails);
-      await axios.post("/api/account/address", data);
+    try {
+      if (userDetails.length > 0) {
+        console.log(`update ${userDetails}`);
+        return await updateAccountDetails();
+      } else {
+        await axios.post("/api/account/address", data);
 
-      setSaving(false);
-      clearFormInput();
-      getUserDetails();
+        setSaving(false);
+        clearFormInput();
+        getUserDetails();
+      }
+    } catch (error) {
+      setError(true);
     }
   };
 
@@ -119,6 +124,7 @@ const AccountDetailsForm = ({}) => {
         onChange={(e) => setNumber(e.target.value)}
       />
       <br />
+      {error && <p>An error occured while saving</p>}
       <button className="btn" type="submit">
         {saving ? "Saving" : "Save"}
       </button>
