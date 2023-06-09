@@ -1,10 +1,10 @@
 "use client";
 import React from "react";
 import { RxCross1 } from "react-icons/rx";
-import SocialIcons from "./SocialIcons";
+import SocialIcons from "../SocialIcons";
 import Link from "next/link";
 import { useNavGlobalContext } from "@/contexts/navigaionContext";
-import SearchInput from "./SearchInput";
+import SearchInput from "../SearchInput";
 import { useGlobalUserContext } from "@/contexts/userContext";
 
 const Sidebar = () => {

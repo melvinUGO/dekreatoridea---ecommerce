@@ -1,11 +1,12 @@
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/navigation/Navbar";
 import "./globals.css";
 import { Inter } from "next/font/google";
-import Footer from "@/components/Footer";
-import Sidebar from "@/components/Sidebar";
+import Footer from "@/components/navigation/Footer";
+import Sidebar from "@/components/navigation/Sidebar";
 import { NavigationContextProvider } from "@/contexts/navigaionContext";
 import SearchModal from "@/components/modals/SearchModal";
 import { UserContextProvider } from "@/contexts/userContext";
+import { CartContextProvider } from "@/contexts/cartContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,11 +21,13 @@ export default function RootLayout({ children }) {
       <body className="relative">
         <UserContextProvider>
           <NavigationContextProvider>
-            <Sidebar />
-            <Navbar />
-            <SearchModal />
-            {children}
-            <Footer />
+            <CartContextProvider>
+              <Sidebar />
+              <Navbar />
+              <SearchModal />
+              {children}
+              <Footer />
+            </CartContextProvider>
           </NavigationContextProvider>
         </UserContextProvider>
       </body>

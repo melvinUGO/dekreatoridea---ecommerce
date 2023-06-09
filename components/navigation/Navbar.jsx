@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import logo from "../public/images/logo.png";
+import logo from "../../public/images/logo.png";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { FaBars } from "react-icons/fa";
 import { FiSearch } from "react-icons/fi";
