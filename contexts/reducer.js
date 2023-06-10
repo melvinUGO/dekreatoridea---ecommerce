@@ -4,7 +4,6 @@ export function reducer(state, action) {
     if (newCartItem.quantity < 1) {
       return [...state];
     }
-    localStorage.setItem("cart", JSON.stringify(state));
     return [...state, newCartItem];
   }
 }

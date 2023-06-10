@@ -9,7 +9,7 @@ import Link from "next/link";
 import { useNavGlobalContext } from "@/contexts/navigaionContext";
 
 const Navbar = () => {
-  const { openSidebar, openSearchModal } = useNavGlobalContext();
+  const { openSidebar, openSearchModal, openCartModal } = useNavGlobalContext();
   return (
     <nav className=" w-full sticky left-0 top-0 bg-[#ffffff] z-40">
       <div className=" max-w-[1400px] mx-auto flex items-center justify-between p-4 pt-8 sm:p-10 lg:px-3">
@@ -30,7 +30,10 @@ const Navbar = () => {
             <FiSearch />
           </button>
 
-          <HiOutlineShoppingBag />
+          <button onClick={openCartModal}>
+            {" "}
+            <HiOutlineShoppingBag />
+          </button>
         </div>
       </div>
     </nav>

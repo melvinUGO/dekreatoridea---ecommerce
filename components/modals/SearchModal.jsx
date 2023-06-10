@@ -6,10 +6,10 @@ import { useNavGlobalContext } from "@/contexts/navigaionContext";
 import Link from "next/link";
 
 const SearchModal = () => {
-  const { searchDialogRef, closeSearchModal } = useNavGlobalContext();
+  const { searchModalRef, closeSearchModal } = useNavGlobalContext();
   return (
     <dialog
-      ref={searchDialogRef}
+      ref={searchModalRef}
       className="p-0 w-full sm:w-[75vw] md:max-w-[600px]"
     >
       <div className=" flex items-center justify-between bg-[#f2f2f2] p-3">

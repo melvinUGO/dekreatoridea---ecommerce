@@ -7,6 +7,7 @@ import { NavigationContextProvider } from "@/contexts/navigaionContext";
 import SearchModal from "@/components/modals/SearchModal";
 import { UserContextProvider } from "@/contexts/userContext";
 import { CartContextProvider } from "@/contexts/cartContext";
+import CartModal from "@/components/modals/CartModal";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,6 +26,7 @@ export default function RootLayout({ children }) {
               <Sidebar />
               <Navbar />
               <SearchModal />
+              <CartModal />
               {children}
               <Footer />
             </CartContextProvider>

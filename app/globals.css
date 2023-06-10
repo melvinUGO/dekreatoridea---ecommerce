@@ -20,7 +20,7 @@
 } */
 
 h1 {
-  @apply text-[#212121] font-semibold text-[1.5rem];
+  @apply text-[#212121] font-medium text-[1.5rem];
 }
 
 p {

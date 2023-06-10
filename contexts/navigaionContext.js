@@ -5,7 +5,8 @@ const NavigationContext = createContext();
 
 export const NavigationContextProvider = ({ children }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const searchDialogRef = useRef();
+  const searchModalRef = useRef();
+  const cartModalRef = useRef();
 
   const openSidebar = () => {
     setIsSidebarOpen(true);
@@ -16,11 +17,19 @@ export const NavigationContextProvider = ({ children }) => {
   };
 
   const openSearchModal = () => {
-    searchDialogRef.current.showModal();
+    searchModalRef.current.showModal();
   };
 
   const closeSearchModal = () => {
-    searchDialogRef.current.close();
+    searchModalRef.current.close();
+  };
+
+  const openCartModal = () => {
+    cartModalRef.current.showModal();
+  };
+
+  const closeCartModal = () => {
+    cartModalRef.current.close();
   };
 
   return (
@@ -29,9 +38,12 @@ export const NavigationContextProvider = ({ children }) => {
         isSidebarOpen,
         closeSidebar,
         openSidebar,
-        searchDialogRef,
+        searchModalRef,
+        cartModalRef,
         openSearchModal,
         closeSearchModal,
+        openCartModal,
+        closeCartModal,
       }}
     >
       {children}
