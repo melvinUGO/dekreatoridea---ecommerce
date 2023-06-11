@@ -12,14 +12,21 @@ const {
 
 const CartContext = createContext();
 
+let lsCart;
+
+if (typeof window !== "undefined") {
+  lsCart = JSON.parse(localStorage.getItem("cart"));
+}
+
 export const CartContextProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
-  const initialCartState = cart;
+  const initialCartState = lsCart !== null ? lsCart : [];
   const [state, dispatch] = useReducer(reducer, initialCartState);
 
   // console.log({ state });
   // console.log({ cart });
 
+  console.log(cart);
   const getLocalstorageCartItem = () => {
     if (typeof window !== "undefined") {
       const storedCart = JSON.parse(localStorage.getItem("cart"));
@@ -35,9 +42,7 @@ export const CartContextProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    if (state.length > 0) {
-      saveToLocalstorage();
-    }
+    saveToLocalstorage();
   }, [state]);
 
   useEffect(() => {
@@ -46,6 +51,14 @@ export const CartContextProvider = ({ children }) => {
 
   const addToCart = (item) => {
     dispatch({ type: "ADD_TO_CART", payload: item });
+  };
+
+  const decreaseCartItem = (id, size) => {
+    dispatch({ type: "DECREASE_CART_ITEM", payload: { id, size } });
+  };
+
+  const increaseCartItem = (id, size) => {
+    dispatch({ type: "INCREASE_CART_ITEM", payload: { id, size } });
   };
 
   const sortCart = (cart, uniqueCartIds) => {
@@ -150,7 +163,9 @@ export const CartContextProvider = ({ children }) => {
   };
 
   return (
-    <CartContext.Provider value={{ addToCart, cart, sortCart }}>
+    <CartContext.Provider
+      value={{ addToCart, cart, sortCart, decreaseCartItem, increaseCartItem }}
+    >
       {children}
     </CartContext.Provider>
   );

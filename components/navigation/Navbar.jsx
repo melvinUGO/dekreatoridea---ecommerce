@@ -7,9 +7,11 @@ import { FaBars } from "react-icons/fa";
 import { FiSearch } from "react-icons/fi";
 import Link from "next/link";
 import { useNavGlobalContext } from "@/contexts/navigaionContext";
+import { useGlobalCartContext } from "@/contexts/cartContext";
 
 const Navbar = () => {
   const { openSidebar, openSearchModal, openCartModal } = useNavGlobalContext();
+  const { cart } = useGlobalCartContext();
   return (
     <nav className=" w-full sticky left-0 top-0 bg-[#ffffff] z-40">
       <div className=" max-w-[1400px] mx-auto flex items-center justify-between p-4 pt-8 sm:p-10 lg:px-3">
@@ -30,10 +32,18 @@ const Navbar = () => {
             <FiSearch />
           </button>
 
-          <button onClick={openCartModal}>
-            {" "}
-            <HiOutlineShoppingBag />
-          </button>
+          <span className="relative">
+            <button
+              onClick={openCartModal}
+              className={` ${
+                cart.length > 0 &&
+                "  before:w-[11px] before:h-[11px] before:absolute before:top-0 before:left-0 before:rounded-full before:bg-[#141414] "
+              }`}
+            >
+              {" "}
+              <HiOutlineShoppingBag />
+            </button>
+          </span>
         </div>
       </div>
     </nav>

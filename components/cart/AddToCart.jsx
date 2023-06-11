@@ -25,7 +25,7 @@ const AddToCart = ({ product }) => {
 
   return (
     <div className="w-full">
-      <HeadingOne text={product.title} />
+      <HeadingOne text={product.title} center={false} />
       <form className=" border border-1 border-[#21212133]">
         <div className=" bg-[#f2f2f2] p-3 px-5">
           <h1>₦{product?.price}</h1>

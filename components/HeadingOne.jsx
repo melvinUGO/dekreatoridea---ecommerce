@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const HeadingOne = ({ text }) => {
+const HeadingOne = ({ text, center = true }) => {
   const [loaded, setLoaded] = useState(false);
   useEffect(() => {
     setLoaded(true);
@@ -15,11 +15,11 @@ const HeadingOne = ({ text }) => {
     <>
       {text && (
         <div className="heading-one ">
-          <h1 className="text-center">{text}</h1>
+          <h1 className={` ${center ? "text-center" : " "}`}>{text}</h1>
           <div
-            className={`m-2 mb-10 transition-all delay-700  h-[2px] mx-auto bg-[#212121] ${
-              loaded ? " w-10" : "w-0"
-            }`}
+            className={`m-1 mb-10 transition-all delay-700  h-[2px] ${
+              center ? " mx-auto " : " mx-0"
+            } bg-[#212121] ${loaded ? " w-10" : "w-0"}`}
           ></div>
         </div>
       )}

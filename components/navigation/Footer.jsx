@@ -19,7 +19,7 @@ const Footer = () => {
         </div>
       </div>
       <div className=" p-5 flex flex-col sm:block gap-3 text-[#111c] text-center lg:text-right sm:text-left bg-[#f2f2f2]">
-        <small className="pr-5">
+        <small className="md:pr-5">
           Developed by{" "}
           <a
             href="https://melvin-ugo.netlify.app/"

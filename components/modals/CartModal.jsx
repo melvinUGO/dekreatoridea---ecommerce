@@ -7,7 +7,8 @@ import Link from "next/link";
 
 const CartModal = () => {
   const { cartModalRef, closeCartModal } = useNavGlobalContext();
-  const { cart, sortCart } = useGlobalCartContext();
+  const { cart, sortCart, decreaseCartItem, increaseCartItem } =
+    useGlobalCartContext();
   const [sortedCart, setSortedCart] = useState([]);
 
   const uniqueCartIds = [...new Set(cart.map((item) => item.id))];
@@ -61,7 +62,7 @@ const CartModal = () => {
                     <button
                       type="button"
                       className="p-1 px-3 border bg-[#ffffff]"
-                      // onClick={decrement}
+                      onClick={() => decreaseCartItem(item.id, item.size)}
                     >
                       -
                     </button>
@@ -69,7 +70,7 @@ const CartModal = () => {
                     <button
                       type="button"
                       className="p-1 px-3 border bg-[#ffffff]"
-                      //onClick={increment}
+                      onClick={() => increaseCartItem(item.id, item.size)}
                     >
                       +
                     </button>

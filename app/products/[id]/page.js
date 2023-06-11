@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 
 const ProductsPage = ({ params }) => {
   const [product, setProduct] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setLoading(true);
@@ -16,15 +16,17 @@ const ProductsPage = ({ params }) => {
     setLoading(false);
   }, [params.id]);
 
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
-    <div className="max-w-[600px] mx-auto lg:max-w-[1200px] p-[20px]">
+    <div className="max-w-[600px] mx-auto lg:max-w-[1200px] p-[20px] md:py-[40px]">
       <div className="grid lg:grid-cols-2 gap-5">
-        {loading && <Loading />}
-        {!loading && (
-          <div className="w-full">
-            {product && <img src={product.images[0]} alt="product.title" />}
-          </div>
-        )}
+        <div className="w-full">
+          {product && <img src={product.images[0]} alt="product.title" />}
+        </div>
+
         <AddToCart product={product} />
       </div>
       <div className="py-10">
