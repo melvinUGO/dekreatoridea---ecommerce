@@ -20,11 +20,11 @@
 } */
 
 h1 {
-  @apply text-[#212121] font-medium text-[1.5rem];
+  @apply text-[#212121] font-normal text-[1.1rem] sm:text-[1.3rem];
 }
 
 p {
-  @apply mb-[1rem] text-[.85rem];
+  @apply mb-[1rem] text-[.8rem];
 }
 
 label {
@@ -35,7 +35,8 @@ body {
   @apply bg-[#ffffff];
 }
 
-input {
+input,
+select {
   @apply outline-none w-full p-3 border border-[#21212180] my-1;
 }
 

@@ -1,4 +1,5 @@
 import Loading from "@/app/loading";
+import { NigerianStates } from "@/assets/NigerianStates";
 import { useGlobalUserContext } from "@/contexts/userContext";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
@@ -32,7 +33,6 @@ const AccountDetailsForm = ({}) => {
 
     try {
       if (userDetails.length > 0) {
-        console.log(`update ${userDetails}`);
         return await updateAccountDetails();
       } else {
         await axios.post("/api/account/address", data);
@@ -71,7 +71,6 @@ const AccountDetailsForm = ({}) => {
 
   useEffect(() => {
     if (user.userId) {
-      console.log("loading dets");
       getUserDetails();
     }
   }, [user.userId]);
@@ -100,14 +99,16 @@ const AccountDetailsForm = ({}) => {
       />
       <br />
 
-      <input
-        required
-        type="text"
-        placeholder="State"
-        value={state}
-        name="state"
-        onChange={(e) => setState(e.target.value)}
-      />
+      <select value={state} onChange={(e) => setState(e.target.value)}>
+        <option value="">--Select State--</option>
+        {NigerianStates.map((state, index) => {
+          return (
+            <option value={state} key={index}>
+              {state}
+            </option>
+          );
+        })}
+      </select>
       <br />
       <input
         required

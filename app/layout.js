@@ -19,19 +19,21 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="relative">
-        <UserContextProvider>
-          <NavigationContextProvider>
-            <CartContextProvider>
-              <Sidebar />
-              <Navbar />
-              <SearchModal />
-              <CartModal />
-              {children}
-              <Footer />
-            </CartContextProvider>
-          </NavigationContextProvider>
-        </UserContextProvider>
+      <body>
+        <div className="relative">
+          <UserContextProvider>
+            <NavigationContextProvider>
+              <CartContextProvider>
+                <Sidebar />
+                <Navbar />
+                <SearchModal />
+                <CartModal />
+                {children}
+                <Footer />
+              </CartContextProvider>
+            </NavigationContextProvider>
+          </UserContextProvider>
+        </div>
       </body>
     </html>
   );

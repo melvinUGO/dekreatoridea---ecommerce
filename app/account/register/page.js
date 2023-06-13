@@ -28,12 +28,12 @@ const AccountRegisterPage = () => {
     const data = { email, password, firstName, lastName };
     try {
       const res = await axios.post("/api/account/register", data);
+      const user = res.data;
+
+      saveUser(user.id, user.token);
     } catch (error) {
       setError(true);
     }
-    const user = res.data;
-
-    saveUser(user.id, user.token);
 
     clearInputFields();
     router.push("/account");

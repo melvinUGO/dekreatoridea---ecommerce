@@ -1,5 +1,11 @@
 "use client";
-const { createContext, useContext, useState, useRef } = require("react");
+const {
+  createContext,
+  useContext,
+  useState,
+  useRef,
+  useEffect,
+} = require("react");
 
 const NavigationContext = createContext();
 

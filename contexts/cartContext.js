@@ -1,7 +1,5 @@
 "use client";
-
 import { reducer } from "./reducer";
-
 const {
   createContext,
   useContext,
@@ -20,13 +18,10 @@ if (typeof window !== "undefined") {
 
 export const CartContextProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
+  const [subTotal, setSubTotal] = useState(0);
   const initialCartState = lsCart !== null ? lsCart : [];
   const [state, dispatch] = useReducer(reducer, initialCartState);
 
-  // console.log({ state });
-  // console.log({ cart });
-
-  console.log(cart);
   const getLocalstorageCartItem = () => {
     if (typeof window !== "undefined") {
       const storedCart = JSON.parse(localStorage.getItem("cart"));
@@ -162,9 +157,23 @@ export const CartContextProvider = ({ children }) => {
     return sortedBySizeCartArray;
   };
 
+  const clearCart = () => {
+    setCart([]);
+    localStorage.removeItem("cart");
+  };
+
   return (
     <CartContext.Provider
-      value={{ addToCart, cart, sortCart, decreaseCartItem, increaseCartItem }}
+      value={{
+        addToCart,
+        cart,
+        sortCart,
+        decreaseCartItem,
+        increaseCartItem,
+        subTotal,
+        setSubTotal,
+        clearCart,
+      }}
     >
       {children}
     </CartContext.Provider>

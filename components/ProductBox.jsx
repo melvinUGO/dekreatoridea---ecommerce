@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { FaAngleRight } from "react-icons/fa";
 
 const ProductBox = ({ product }) => {
   return (
@@ -21,13 +22,15 @@ const ProductBox = ({ product }) => {
           />
         )}
       </div>
-      <button className="btn" role="button" aria-label="button">
-        SELECT OPTIONS &rarr;
+      <button className="btn text-center" role="button" aria-label="button">
+        <p className="m-0 flex text-center w-fit mx-auto ">
+          {" "}
+          SELECT OPTIONS
+          <FaAngleRight className=" text-[1.1rem]" />
+        </p>
       </button>
       <div>
-        <h1 className=" text-[1.3rem] font-semibold py-2 hover:text-[#6e6e6e]">
-          {product.title}
-        </h1>
+        <h1 className="py-1 hover:text-[#6e6e6e]">{product.title}</h1>
         <p>₦{product.price}</p>
       </div>
     </Link>

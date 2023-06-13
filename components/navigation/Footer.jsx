@@ -1,10 +1,22 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import SocialIcons from "../SocialIcons";
+import { usePathname } from "next/navigation";
 
 const Footer = () => {
+  const [isHidden, setIsHidden] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    setIsHidden(pathname === "/checkout");
+  }, [pathname]);
   return (
-    <footer className="border border-t-[#e4e4e4] mt-10">
+    <footer
+      className={`border border-t-[#e4e4e4] mt-10  ${
+        isHidden ? " hidden " : " "
+      }`}
+    >
       <div className="px-3 py-10 md:grid grid-cols-2  max-w-[1400px] mx-auto">
         <div className=" footer-links-container flex flex-col gap-4 text-[#111c] text-[.8rem] pb-5 md:pb-0">
           <Link href="/contact">Contact Us</Link>
