@@ -27,7 +27,7 @@ const CheckoutCartDetails = () => {
               className="flex gap-3 items-center justify-between mb-3"
             >
               <div className=" flex gap-3 items-center">
-                <div className="relative w-[60px] h-[60px] border border-[#dadada] rounded-md">
+                <div className="relative w-[60px] h-[60px] border border-[#dadada] rounded-md overflow-hidden">
                   <img src={item.image} alt={item.title} />
                   <p className=" w-[18px] h-[18px] text-center rounded-full bg-[#6c6c6c] text-white absolute right-0 top-0">
                     {item.quantity}

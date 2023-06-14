@@ -1,6 +1,6 @@
 import PaystackPop from "@paystack/inline-js";
 
-export const handlePayment = (email, amount) => {
+export const handlePayment = (email, amount, router) => {
   const paystack = new PaystackPop();
 
   paystack.newTransaction({
@@ -10,8 +10,12 @@ export const handlePayment = (email, amount) => {
     metadata: { email },
     onSuccess: (transaction) => {
       // Payment complete! Reference: transaction.reference
-      window.location =
-        "/checkout?success=true&reference=" + transaction.reference;
+      // if (typeof window !== "undefined") {
+      //   return (window.location =
+      //     "/checkout?success=true&reference=" + transaction.reference);
+      // }
+
+      router.push("/success");
     },
     onCancel: () => {
       // user closed popup

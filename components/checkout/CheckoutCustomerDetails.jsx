@@ -1,10 +1,11 @@
-"use state";
-import { handlePayment } from "@/app/api/paystackInterface";
+"use client";
+import { handlePayment } from "@/app/paystackInterface";
 import { NigerianStates } from "@/assets/NigerianStates";
 import { useGlobalCartContext } from "@/contexts/cartContext";
 import { useGlobalUserContext } from "@/contexts/userContext";
 import axios from "axios";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { FaAngleLeft } from "react-icons/fa";
 
@@ -16,6 +17,7 @@ const CheckoutCustomerDetails = () => {
   const [state, setState] = useState("");
   const [number, setNumber] = useState("");
   const [address, setAddress] = useState("");
+  const router = useRouter();
   //    const [shippingFee, setShippingFee] = useState("");
 
   // //    set shipping fee
@@ -47,7 +49,8 @@ const CheckoutCustomerDetails = () => {
   }, []);
 
   const goToPayment = async () => {
-    handlePayment(email, subTotal);
+    handlePayment(email, subTotal, router);
+
     // const res = await axios.post("/api/checkout", {
     //   name,
     //   email,
