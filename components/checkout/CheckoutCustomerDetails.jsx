@@ -18,6 +18,7 @@ const CheckoutCustomerDetails = () => {
   const [number, setNumber] = useState("");
   const [address, setAddress] = useState("");
   const router = useRouter();
+
   //    const [shippingFee, setShippingFee] = useState("");
 
   // //    set shipping fee

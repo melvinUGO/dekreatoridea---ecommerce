@@ -3,8 +3,7 @@ import { useGlobalCartContext } from "@/contexts/cartContext";
 import React, { useEffect, useState } from "react";
 
 const CheckoutCartDetails = () => {
-  const { cart, sortCart, decreaseCartItem, increaseCartItem } =
-    useGlobalCartContext();
+  const { cart, sortCart } = useGlobalCartContext();
   const [sortedCart, setSortedCart] = useState([]);
 
   const uniqueCartIds = [...new Set(cart.map((item) => item.id))];
@@ -18,7 +17,7 @@ const CheckoutCartDetails = () => {
     return acc + obj.price * obj.quantity;
   }, 0);
   return (
-    <>
+    <div>
       <div className="pl-[44px] pr-[5vw] hidden lg:block border-l border-l-[#6c6c6c]">
         {sortedCart.map((item, index) => {
           return (
@@ -47,7 +46,7 @@ const CheckoutCartDetails = () => {
           <p className=" text-[1.2rem] ">₦{total}</p>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

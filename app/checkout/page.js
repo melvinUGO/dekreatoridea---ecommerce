@@ -1,4 +1,3 @@
-"use client";
 import CheckoutCartDetails from "@/components/checkout/CheckoutCartDetails";
 import CheckoutCustomerDetails from "@/components/checkout/CheckoutCustomerDetails";
 import { FaAngleRight } from "react-icons/fa";

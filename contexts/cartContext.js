@@ -162,6 +162,10 @@ export const CartContextProvider = ({ children }) => {
     localStorage.removeItem("cart");
   };
 
+  const addSubtotal = (total) => {
+    setSubTotal(total);
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -171,7 +175,7 @@ export const CartContextProvider = ({ children }) => {
         decreaseCartItem,
         increaseCartItem,
         subTotal,
-        setSubTotal,
+        addSubtotal,
         clearCart,
       }}
     >

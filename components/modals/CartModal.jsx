@@ -9,7 +9,7 @@ import Image from "next/image";
 
 const CartModal = () => {
   const { cartModalRef, closeCartModal } = useNavGlobalContext();
-  const { cart, sortCart, decreaseCartItem, increaseCartItem, setSubTotal } =
+  const { cart, sortCart, decreaseCartItem, increaseCartItem, addSubtotal } =
     useGlobalCartContext();
   const [sortedCart, setSortedCart] = useState([]);
 
@@ -20,11 +20,13 @@ const CartModal = () => {
     setSortedCart(array);
   }, [cart]);
 
-  const total = sortedCart.reduce((acc, obj) => {
+  const total = sortedCart?.reduce((acc, obj) => {
     return acc + obj.price * obj.quantity;
   }, 0);
 
-  setSubTotal(total);
+  if (total > 0) {
+    addSubtotal(total);
+  }
 
   return (
     <dialog
