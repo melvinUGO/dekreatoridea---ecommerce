@@ -9,13 +9,7 @@ export const handlePayment = (email, amount, router) => {
     amount: amount * 100,
     metadata: { email },
     onSuccess: (transaction) => {
-      // Payment complete! Reference: transaction.reference
-      // if (typeof window !== "undefined") {
-      //   return (window.location =
-      //     "/checkout?success=true&reference=" + transaction.reference);
-      // }
-
-      router.push("/success");
+      router.push("/success?reference=" + transaction.reference);
     },
     onCancel: () => {
       // user closed popup

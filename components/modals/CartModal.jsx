@@ -24,7 +24,7 @@ const CartModal = () => {
     return acc + obj.price * obj.quantity;
   }, 0);
 
-  setSubTotal(total > 0 && total);
+  setSubTotal(total);
 
   return (
     <dialog
