@@ -1,7 +1,7 @@
 "use client";
 import PaystackPop from "@paystack/inline-js";
 
-export const handlePayment = (email, amount, router) => {
+export default handlePayment = (email, amount, router) => {
   if (window === "undefined") {
     return;
   }
