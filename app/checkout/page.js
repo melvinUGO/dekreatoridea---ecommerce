@@ -1,6 +1,14 @@
 import CheckoutCartDetails from "@/components/checkout/CheckoutCartDetails";
-import CheckoutCustomerDetails from "@/components/checkout/CheckoutCustomerDetails";
+//import CheckoutCustomerDetails from "@/components/checkout/CheckoutCustomerDetails";
 import { FaAngleRight } from "react-icons/fa";
+import dynamic from "next/dynamic";
+
+const CheckoutCustomerDetails = dynamic(
+  () => import("@/components/checkout/CheckoutCustomerDetails"),
+  {
+    ssr: false,
+  }
+);
 
 const CheckoutPage = () => {
   return (

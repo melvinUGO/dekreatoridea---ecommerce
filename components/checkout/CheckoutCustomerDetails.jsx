@@ -1,17 +1,17 @@
 "use client";
-//import  handlePayment  from "@/app/paystackInterface";
+import { handlePayment } from "@/app/paystackInterface";
 import { NigerianStates } from "@/assets/NigerianStates";
 import { useGlobalCartContext } from "@/contexts/cartContext";
 import { useGlobalUserContext } from "@/contexts/userContext";
 import axios from "axios";
-import dynamic from "next/dynamic";
+//import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { FaAngleLeft } from "react-icons/fa";
-const handlePayment = dynamic(() => import("@/app/paystackInterface"), {
-  ssr: false,
-});
+// const handlePayment = dynamic(() => import("@/app/paystackInterface"), {
+//   ssr: false,
+// });
 
 const CheckoutCustomerDetails = () => {
   const { user } = useGlobalUserContext();
