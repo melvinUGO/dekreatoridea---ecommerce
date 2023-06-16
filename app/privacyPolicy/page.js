@@ -9,9 +9,9 @@ const PrivacyPolicyPage = () => {
         <HeadingOne text={"PRIVACY POLICY"} />
         <p>De Kreator Idea Privacy Policy</p>
         <p>
-          his Privacy Policy describes how your personal information is
+          This Privacy Policy describes how your personal information is
           collected, used, and shared when you visit or make a purchase from
-          unfinishedlegacy.co (the “Site”).
+          dekreatorsidea.com (the “Site”).
         </p>
         <br />
         <p>PERSONAL INFORMATION WE COLLECT</p>
@@ -89,7 +89,7 @@ const PrivacyPolicyPage = () => {
         <p>
           For more information about our privacy practices, if you have
           questions, or if you would like to make a complaint, please contact us
-          by e-mail at fake@gmail.com
+          by e-mail at dekreatorsidea@gmail.com
         </p>
       </div>
     </>

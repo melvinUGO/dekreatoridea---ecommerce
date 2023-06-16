@@ -11,7 +11,6 @@ export const UserContextProvider = ({ children }) => {
   const getUserDetails = () => {
     if (typeof window !== "undefined") {
       authUser = JSON.parse(localStorage.getItem("user"));
-      console.log("getUserDetails:" + authUser);
       if (authUser) {
         setUser(authUser);
       }

@@ -7,21 +7,21 @@ const ContactUsPage = () => {
         <div className=" text-center contact-links">
           <p>
             CUSTOMER SERVICE <br />
-            <a href="mailto:">fake@gmail.com</a>
+            <a href="mailto:">dekreatorsidea@gmail.com</a>
           </p>
           <p>
             INSTAGRAM <br />{" "}
             <a href="http://" target="_blank" rel="noopener noreferrer">
-              @fakeAcoount
+              @dekreatorsidea
             </a>
           </p>
           <p>
             BUSINESS INQUIRES <br />
-            <a href="mailto:">fake@gmail.com</a>
+            <a href="mailto:">dekreatorsidea@gmail.com</a>
           </p>
           <p>
             CUSTOM SHIRT <br />
-            <a href="mailto:">fake@gmail.com</a>
+            <a href="mailto:">dekreatorsidea@gmail.com</a>
           </p>
         </div>
         <div className=" py-20">
