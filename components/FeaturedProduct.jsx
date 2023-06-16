@@ -9,7 +9,7 @@ const FeaturedProduct = ({ product }) => {
         <div className="w-full">
           {product && <img src={product.images[0]} alt="product.title" />}
         </div>
-        <AddToCart product={product} />;
+        <AddToCart product={product} />
       </div>
     </div>
   );
